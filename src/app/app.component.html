@@ -1,0 +1,67 @@
+<div class="container">
+	<div class="row mt-1">
+		<div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th> # </th>
+						<th> Name </th>
+						<th> Songs </th>
+						<th>  </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td> 1 </td>
+						<td> {{ playlist.name }} </td>
+						<td> 23 </td>
+						<td> 
+							<input type="checkbox"[checked]="playlist.favourite" (change)="playlist.favourite = $event.target.value">Favourite
+						 </td>
+					</tr>
+					<tr>
+						<td> 2 </td>
+						<td> A </td>
+						<td> 2 </td>
+						<td> false </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-6">
+			<h1>
+			  {{title}}
+			</h1>
+			<div class="card" style="width: 20rem;">
+			  <div class="card-block">
+			    <h4 class="card-title">Playlist</h4>
+			    <p class="card-text">Description</p>
+			  </div>
+			  <div class="card-block">
+			  	<div class="form-group">
+			  		<label>Name:</label>
+			  		<input type="text" [value]="playlist.name" class="form-control" (keyup)="playlist.name = $event.target.value">
+			  	</div>
+			  	<div class="form-group">
+			  		<label>Songs:</label>
+			  		<input type="text" [value]="playlist.tracks + ' songs' " disabled class="form-control">
+			  	</div>
+			  	<div class="form-group">
+			  		<label>Color:</label>
+			  		<input type="color" [value]="playlist.color" (change)="playlist.color = $event.target.value">
+			  	</div>
+			  	<div class="form-group">
+			  		<label>
+			  		<input type="checkbox"[checked]="playlist.favourite" (change)="playlist.favourite = $event.target.value">Favourite</label>
+			  	</div>
+			  	<div class="form-group">
+			  		<button class="btn btn-success float-xs-right" (click)="save($event)">Save</button>
+			  	</div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
