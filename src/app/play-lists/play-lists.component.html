@@ -1,0 +1,25 @@
+	<style>
+		.playlist-row{
+			border-bottom: 2px solid transparent;
+		}
+	</style>
+	<div class="row mt-1">
+		<div class="col-xs mr-2">
+			<app-playlists-list [selected]="selected" [playlists]="playlists" (selected)=" select($event) "></app-playlists-list>
+
+			<div class="form-group">
+				<button class="btn btn-success float-xs-right" (click)="createNew($event)">New playlist</button>
+			</div>
+		</div>
+		<div class="col-xs-6">
+
+			<div [ngSwitch]="mode">
+				<app-content-card title="Playlist" content="Choose playlist" *ngSwitchDefault></app-content-card>
+
+				<app-playlist-detail [playlist]="selected" (editplaylist)="edit($event)" *ngSwitchCase="'selected'"></app-playlist-detail>
+
+				<app-playlist-form [playlist]="selected" *ngSwitchCase="'edit'"></app-playlist-form>
+
+			</div>
+		</div>
+	</div>

@@ -8,16 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app works!';
 
-  playlist = {
-	name: 'The best of',
-	tracks: 23,
-	color: '#f6546a',
-	favourite: true
-  }
-
-  save(event){
-  	console.log('Saved', event)
-  }
+  
 
 }
 
