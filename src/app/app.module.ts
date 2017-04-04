@@ -2,27 +2,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { PlaylistsModule } from './playlists/playlists.module';
+import { MusicSearchModule } from './music-search/music-search.module';
 
 import { AppComponent } from './app.component';
-import { PlayListsComponent } from './play-lists/play-lists.component';
-import { ContentCardComponent } from './play-lists/content-card.component';
-import { PlaylistFormComponent } from './play-lists/playlist-form.component';
-import { PlaylistsListComponent } from './play-lists/playlists-list.component';
-import { PlaylistDetailComponent } from './play-lists/playlist-detail.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PlayListsComponent,
-    ContentCardComponent,
-    PlaylistFormComponent,
-    PlaylistsListComponent,
-    PlaylistDetailComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    PlaylistsModule,
+    MusicSearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]

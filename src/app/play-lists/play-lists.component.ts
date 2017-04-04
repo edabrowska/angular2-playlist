@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { PlaylistsService } from './playlists.service';
 
 @Component({
   selector: 'app-play-lists',
@@ -7,31 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayListsComponent implements OnInit {
 
+
+//(private/public/? pole klasy playlistService:typ wstrzykiwanego obiektu)
+//ang sam doda pole klasy playlistService + sam przypisuje ten obiekt to this
+  constructor(private playlistsService:PlaylistsService) {
+
+    
+  }
+
+//to jest teraz przekazywana w service
+  playlists = [  ]
+
+//tutaj kod zostanie wykonany dopiero kiedy komponent zostanie 'zamontowany' na stronie
+  ngOnInit() {
+    this.playlists = this.playlistsService.getPlaylists()
+//do obiektu, gdy będzie tworzył komponent niech umieści w nim playlistsService danego typu - pobieranie danych z usługi
+  }
+
   size = 1.2;
 
   selected = null;
 
-  edited = {
-
-  }
+  edited = {  }
 
   mode = "none"
-
-  playlists = [
-  	{
-		name: 'The best of...',
-		tracks: 23,
-		color: '#f6546a',
-		favourite: true
-	},
-			
-	{
-		name: 'Abc...',
-		tracks: 2,
-		color: '#42f9e7',
-		favourite: false
-	}
-  ]	
 
   select(playlist){
   	if(playlist !== this.selected)
@@ -41,15 +41,17 @@ export class PlayListsComponent implements OnInit {
 
   edit(playlist){
   	this.mode = "edit";
-  	this.edited = playlist;
+  	this.edited = Object.assign({},playlist);
   	this.selected = playlist;
   }
 
   createNew(){
-  	var newPlaylist = {};
+  	//service za nas tworzy tutaj playlist, a komponent pobiera dane
+    let newPlaylist = this.playlistsService.createPlaylist();
   	this.mode = "edit";
   	this.selected = newPlaylist;
   	this.edited = newPlaylist;
+    //przekazuję do formularza obiekt newPlaylists
   }
 
   getPlaylistStyle(playlist){
@@ -58,13 +60,12 @@ export class PlayListsComponent implements OnInit {
   	}
   }
 
-  save(event){
-  	console.log('Saved', event)
+  save(playlist){
+  	this.playlistsService.savePlaylist(playlist);
+  	
   }
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  
 
 }
+//tutaj tylko wyświetlanie playlisty, formularza; tryby: edited / selected / none
