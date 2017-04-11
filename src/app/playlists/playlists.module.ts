@@ -13,17 +13,17 @@ import playlistsData from './playlists.data';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [
- //komponenty: wyświetlają treści i komunikujądo użytkownika i zbierają akcje 
+ //komponenty: wyświetlają treści i komunikujądo użytkownika i zbierają akcje
   	PlayListsComponent,
     ContentCardComponent,
     PlaylistFormComponent,
     PlaylistsListComponent,
     PlaylistDetailComponent
   ],
- //tylko ten komponent, który exportujemy będzie i musi być dostępny 
+ //tylko ten komponent, który exportujemy będzie i musi być dostępny
   exports: [
   	PlayListsComponent
   ],
@@ -44,7 +44,7 @@ import playlistsData from './playlists.data';
 	  // 		favourite: false,
 	  // 		tracks: 2
 	  // 	})
-	  // 	return data;
+	  // 	return data; skrot od dependencies
 	  // }, deps: ['PlaylistsExampleData']}
   ]
 })
