@@ -4,12 +4,15 @@ import { MusicSearchService } from './music-search.service';
 @Component({
   selector: 'app-album-list',
   template: `
-  	<h4>Albums</h4>
-  	<div class="card-deck">
+  	<div class="card-deck card-deck-justify">
 	  	<app-album-card [album]="album" class="card" *ngFor="let album of albums"></app-album-card>
-	</div>  	
+	</div>
   `,
-  styles: []
+  styles: [`
+    .card-deck-justify{
+      justify-content: space-between;
+    }
+  `]
 })
 export class AlbumListComponent implements OnInit {
 

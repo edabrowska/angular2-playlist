@@ -6,8 +6,8 @@ export class MusicSearchService {
 
 	albums = [	];
 
-  constructor(private http: Http) { 
-  	
+  constructor(private http: Http) {
+
   }
 
   search(query, callback){
@@ -16,7 +16,7 @@ export class MusicSearchService {
   		let data = response.json();
   		let albums = data.albums.items;
   		this.albums = albums;
-  		callback(albums);
+  		callback(albums)
   	})
   }
 
