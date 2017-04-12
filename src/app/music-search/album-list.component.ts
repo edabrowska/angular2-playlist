@@ -6,7 +6,7 @@ import { MusicSearchService } from './music-search.service';
   template: `
   	<div class="card-deck card-deck-justify">
 	  	<app-album-card [album]="album" class="card" *ngFor="let album of albums"></app-album-card>
-	</div>
+	  </div>
   `,
   styles: [`
     .card-deck-justify{
@@ -16,16 +16,17 @@ import { MusicSearchService } from './music-search.service';
 })
 export class AlbumListComponent implements OnInit {
 
-	albums = [ 	];
+	albums = [];
 
   constructor(private musicSearch: MusicSearchService) { }
 
 
 //komponent jak się załaduje to załaduje się serwis z construktora, to przy inicjalizacji komponentu zostanie wykonana metoda getAlbums i zgłoszony będzie callback. czyli funkcja się wykona gdy albumy zostaną pbrane z serwera
   ngOnInit() {
-  	this.musicSearch.getAlbums((albums) => {
-  		this.albums = albums;
-  	});
+  	this.musicSearch.getAlbumsStream().subscribe((albums)=>{
+      this.albums = albums;
+    })
+
   }
 
 }

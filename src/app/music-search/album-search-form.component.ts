@@ -6,7 +6,7 @@ import { MusicSearchService } from './music-search.service';
   template: `
     <form (ngSubmit)="search(query)">
       <div class="input-group">
-        <input type="text" [(ngModel)]="query" class="form-control" placeholder="Key words">
+        <input type="text" [(ngModel)]="query" name="query" class="form-control" placeholder="Key words">
         <span class="input-group-btn">
           <button type="submit" class="btn btn-outline-primary">Search</button>
         </span>
@@ -20,9 +20,7 @@ export class AlbumSearchFormComponent implements OnInit {
   constructor(private musicSearch: MusicSearchService) { }
 
   search(query){
-    this.musicSearch.search(query, (albums) => {
-      console.log(albums);
-    })
+    this.musicSearch.search(query);
   }
 
   ngOnInit() {  }
