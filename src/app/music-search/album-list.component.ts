@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MusicSearchService } from './music-search.service';
 
 @Component({
   selector: 'app-album-list',
   template: `
-  	<div class="card-deck card-deck-justify">
-	  	<app-album-card [album]="album" class="card" *ngFor="let album of albums"></app-album-card>
-	  </div>
+    <div class="card-deck card-deck-justify">
+      <album-card [album]="album" class="card"
+        *ngFor="let album of albums | async"></album-card>
+    </div>
   `,
   styles: [`
     .card-deck-justify{
@@ -15,18 +16,12 @@ import { MusicSearchService } from './music-search.service';
   `]
 })
 export class AlbumListComponent implements OnInit {
+  albums;
 
-	albums = [];
+  constructor(private musicSearch: MusicSearchService) {}
 
-  constructor(private musicSearch: MusicSearchService) { }
-
-
-//komponent jak się załaduje to załaduje się serwis z construktora, to przy inicjalizacji komponentu zostanie wykonana metoda getAlbums i zgłoszony będzie callback. czyli funkcja się wykona gdy albumy zostaną pbrane z serwera
-  ngOnInit() {
-  	this.musicSearch.getAlbumsStream().subscribe((albums)=>{
-      this.albums = albums;
-    })
-
+  ngOnInit(){
+    this.albums = this.musicSearch.getAlbumsStream()
   }
 
 }

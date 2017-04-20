@@ -12,7 +12,7 @@ export class MusicSearchService {
 	albumsStream = new Subject();
 
   constructor(private http: Http) {
-		this.search('alice');
+		this.search('Batman');
   }
 
   //metoda, która będzie zwracala strumień przygotowywany przez nas

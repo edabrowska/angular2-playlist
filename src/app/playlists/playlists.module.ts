@@ -9,11 +9,13 @@ import { PlaylistDetailComponent } from '../play-lists/playlist-detail.component
 import { PlaylistsService } from '../play-lists/playlists.service';
 
 import playlistsData from './playlists.data';
+import { routerModule } from '../play-lists/play-lists.routing';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    routerModule
   ],
   declarations: [
  //komponenty: wyświetlają treści i komunikujądo użytkownika i zbierają akcje

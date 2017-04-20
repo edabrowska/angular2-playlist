@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MusicSearchComponent } from './music-search.component';
 import { AlbumListComponent } from './album-list.component';
@@ -9,11 +9,15 @@ import { AlbumCardComponent } from './album-card.component';
 import { MusicSearchService } from './music-search.service';
 import { AlbumSearchFormComponent } from './album-search-form.component';
 
+import { routerModule } from './music-search.routing';
+
 @NgModule({
   imports: [
     CommonModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    routerModule
   ],
   declarations: [
   	MusicSearchComponent,
@@ -26,6 +30,7 @@ import { AlbumSearchFormComponent } from './album-search-form.component';
   ],
   providers: [
   	MusicSearchService
-  ]
+  ],
+  schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class MusicSearchModule { }
